@@ -324,7 +324,10 @@ def main():
         )
         # Define the project
         if project_name is not None:
-            project = Project(name=project_name, connector=server)
+            if project_id is not None:
+                project = Project(name=project_name, project_id=project_id, connector=server)
+            else:
+                project = Project(name=project_name, connector=server)
         elif project_id is not None:
             project = Project(project_id=project_id, connector=server)
     except Exception as err:
